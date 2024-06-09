@@ -1,0 +1,97 @@
+<html>
+    <head>
+        <title>首 页</title>
+        <style>
+            li a{
+                text-decoration: none;
+            }
+            div.dingduan{
+                /* overflow: hidden; */
+                height: 50px;
+                width: 100%;
+                background-color: rgb(59, 135, 197);
+            }
+
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.menu_one{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_one>li{
+                width: 200px;
+                text-align: center;
+                line-height: 50px;
+                float: left;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_two>li{
+                height: 0px;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+            .menu_one>li:hover{
+                background-color: rgb(65, 152, 223);
+            }
+            .menu_one>li:hover .menu_two>li{
+                height: 50px;
+            }
+            .menu_two>li{
+                background-color: rgb(65, 152, 223);
+                height: 50px;
+            }
+            .menu_two>li:hover{
+                background-color: aqua;
+            }
+
+
+        </style>
+    </head>
+    <body style="background-image: url('/static/images/shouye.jpg'); background-size: 100%">
+
+        <div class="dingduan" style="text-align: center;">
+            <h1>证书认证中心</h1>
+            <!-- <img src="74097177.jpg"> -->
+        </div>
+
+        <ul type="none" class="menu_one">
+            <li><a href="/welcome">首页</a></li>
+            <li><a href="">证书查询操作</a>
+                <ul type="none" class="menu_two">
+                    <li><a href="/certificate_read">查询个人证书</a></li>
+                    <li><a href="">查询其他证书-待施工</a></li>
+                </ul>
+            </li>
+            <li><a href="">个人证书操作</a>
+                <ul class="menu_two">
+                    <li><a href="/certificate_apply">申请证书</a></li>
+                    <li><a href="/certificate_cancel">撤销证书</a></li>
+                </ul>
+            </li>
+            <li><a href="">证书下载操作</a>
+                <ul class="menu_two">
+                    <li><a href="/download_certificate_name">通过真实姓名下载</a></li>
+                    <li><a href="/download_private_key">下载个人私钥</a></li>
+                </ul>
+            </li>
+            <li><a href="">一级菜单D</a></li>
+            <li><a href="">个人中心</a>
+                <ul class="menu_two">
+                    <li><a href="/userspace_read">查看个人信息</a></li>
+                    <li><a href="/userspace">完善个人信息</a></li>
+                </ul>
+            </li>
+            <li><a href="/exit">退出登录</a>
+        </ul>
+
+
+    </body>
+</html>

@@ -1,0 +1,126 @@
+<html>
+    <head>
+        <title>个人中心</title>
+        <style>
+            li a{
+                text-decoration: none;
+            }
+            div.dingduan{
+                /* overflow: hidden; */
+                height: 50px;
+                width: 100%;
+                background-color: rgb(59, 135, 197);
+            }
+
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.menu_one{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_one>li{
+                width: 200px;
+                text-align: center;
+                line-height: 50px;
+                float: left;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_two>li{
+                height: 0px;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+            .menu_one>li:hover{
+                background-color: rgb(65, 152, 223);
+            }
+            .menu_one>li:hover .menu_two>li{
+                height: 50px;
+            }
+            .menu_two>li{
+                background-color: rgb(65, 152, 223);
+                height: 50px;
+            }
+            .menu_two>li:hover{
+                background-color: aqua;
+            }
+            div.xinxi{
+                height: auto;
+                width: 50%;
+                background-color: rgb(220, 220, 220,0.9);
+                margin : 50 auto;
+                text-align: center;
+            }
+            table{
+                width: 100%;
+                table-layout: fixed;
+                border: 1px solid black;
+            }
+
+            td {
+                padding: 10px; /* 调整内容与边框之间的间距 */
+                font-size: 16px; /* 调整文字大小 */
+                border: 1px solid black;
+            }
+
+        </style>
+    </head>
+    <body style="background-image: url('/static/images/wenda.jpg'); background-size: 100%">
+
+        <div class="dingduan" style="text-align: center;">
+            <h1>手机问答系统</h1>
+            <!-- <img src="74097177.jpg"> -->
+        </div>
+
+        <ul type="none" class="menu_one">
+            <li><a href="/welcome">首页</a></li>
+            <li><a href="/FB">反馈</a>
+                <ul type="none" class="menu_two">
+                </ul>
+            </li>
+<!--            <li><a href="/search_classroom">空闲教室查询</a>-->
+<!--                <ul class="menu_two">-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li><a href="">空闲教室操作</a>-->
+<!--                <ul class="menu_two">-->
+<!--                    <li><a href="/book_classroom">教室预约</a></li>-->
+<!--                    <li><a href="/cancelbooking_classroom">解除预约</a></li>-->
+<!--                    <li><a href="">管理教室状态(管理员)</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
+            <li><a href="">一级菜单D</a></li>
+            <li><a href="">个人中心</a>
+                <ul class="menu_two">
+                    <li><a href="">查看个人信息</a></li>
+                    <li><a href="">完善个人信息</a></li>
+                </ul>
+            </li>
+            <li><a href="/exit">退出登录</a>
+        </ul>
+
+        <div class="xinxi" style="text-align: center;">
+            <form action="/QA" method="post">
+                <label for="location">提问内容:</label>
+                <br>
+                <input type="text" style="width: 60%; height:10%; "placeholder="输入您的问题" id="question" name="question" required>
+                <br>
+                <input type="submit" value="确定">
+                <br>
+
+            </form>
+
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+
+        </div>
+    </body>
+</html>

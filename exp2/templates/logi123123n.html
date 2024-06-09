@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <link rel="stylesheet" href="./js/layui/css/layui.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/layui/css/layui.css') }}">
+    <title>用户登录</title>
+    <!-- 引用LayUI样式 -->
+<!--    <link rel="stylesheet" href="./js/layui/css/layui.css">-->
+<!--    <link rel="stylesheet" href="./css/index.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/layui/css/layui.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <style>
+        body {
+            background:url('./img/background.jpg');
+            height: 100%;
+            width: 100%;
+            background-size:cover;
+        }
+    div{
+        opacity: 0.8;
+    }
+    </style>
+</head>
+<body>
+    <!-- 登录注册区域     -->
+    <div class="loginAndRegBox" >
+        <div class="title-box">CA证书认证中心</div>
+        <!-- 登录div -->
+        <div class="login-box">
+            <!-- 登录表单 -->
+            <form class="layui-form" action="/login" method="POST" id="form_login">
+                <!-- 用户名 -->                
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-username"></i>   
+                    <input type="text" id="username" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 密码 -->                
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>   
+                    <input type="password" id="password" name="password" required  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 按钮 -->
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-fluid layui-btn-normal" lay-submit>登录</button>
+                </div>
+                <div class="layui-form-item links">
+<!--                    <a href="javascript:;"  id="link_reg">去注册账号</a>-->
+                    <a href="/register" id="link_reg">去注册账号</a>
+                </div>
+            </form>       
+        </div>
+
+        <!-- 注册div -->
+        <div class="reg-box" >
+            <!-- 注册表单 -->
+            <form class="layui-form" id="form_reg">                
+                <!-- 用户名 -->                
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-username"></i>   
+                    <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 密码 -->                
+                <div class="layui-form-item">
+                    <i class="layui-icon layui-icon-password"></i>   
+                    <input type="password" name="password" required  lay-verify="required|pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 确认密码 -->
+                <div class="layui-form-item" >
+                    <i class="layui-icon layui-icon-password"></i> 
+                    <input type="password" name="repassword" required  lay-verify="required|repwd" placeholder="再次确认密码" autocomplete="off" class="layui-input">
+                </div>
+                <!-- 按钮 -->
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-fluid layui-btn-normal" lay-submit>注册</button>
+                </div>
+                <div class="layui-form-item links">
+<!--                    <a href="javascript:;" id="link_login">去登录账号</a>-->
+                    <a href="{{ url_for('static', filename='js/login.js') }}" id="link_login">去登录账号</a>
+                </div>
+    </div>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    <!-- 导入JQuery -->
+        <script>
+    $(function() {
+      //点击“去注册”的链接
+      $("#link_reg").on('click', function(event) {
+        $('.login-box').hide();
+        $('.reg-box').show();
+      });
+      //点击“登录”的链接
+      $("#link_login").on('click', function() {
+        $('.login-box').show();
+        $('.reg-box').hide();
+      });
+
+      //从layui 中获取form 对象
+      var form = layui.form;
+      var layer = layui.layer;
+    });
+  </script>
+    <script src="./js/jquery.js"></script>
+    <!-- 导入Layui的js文件 -->
+    <script src="./js/layui/layui.all.js"></script>
+    <!-- 导入自己编写的js文件 -->
+    <script src="../static/js/login.js"></script>
+</body>
+</html>
