@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        textarea, input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        div.text{
+                height: auto;
+                width: auto;
+                background-color: rgb(220, 220, 220,0.9);
+                margin : auto;
+                text-align: auto;
+        }
+        .centered-link {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .centered-link a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .centered-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>管理员页面</h1>
+    </header>
+     <div class="centered-link">
+            <a href="/login">返回登录页?</a>
+        </div>
+    <main>
+        <h2>当前文本库内容</h2>
+        <div class = "text">
+            {{ file_content }}
+        </div>
+
+        <h2>更新文本为：</h2>
+        <form action="/manager" method="POST">
+            <textarea name="newtext" rows="10" cols="50"></textarea><br>
+            <input type="submit" value="修改文本库">
+        </form>
+
+        <h2>用户信息</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in userinfo %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>删除用户</h2>
+        <form action="/manager" method="POST">
+            <input name="delete_username" type="text" placeholder="Username to delete" required>
+            <input type="submit" value="删除">
+        </form>
+    </main>
+</body>
+</html>

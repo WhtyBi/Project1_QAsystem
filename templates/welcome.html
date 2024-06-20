@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>首 页</title>
+        <style>
+            li a{
+                text-decoration: none;
+            }
+            div.dingduan{
+                /* overflow: hidden; */
+                height: 50px;
+                width: 100%;
+                background-color: rgb(59, 135, 197);
+            }
+
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            ul.menu_one{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_one>li{
+                width: 200px;
+                text-align: center;
+                line-height: 50px;
+                float: left;
+                background-color: rgb(59, 135, 197);
+            }
+            ul.menu_two>li{
+                height: 0px;
+                overflow: hidden;
+                transition: 0.3s;
+            }
+            .menu_one>li:hover{
+                background-color: rgb(65, 152, 223);
+            }
+            .menu_one>li:hover .menu_two>li{
+                height: 50px;
+            }
+            .menu_two>li{
+                background-color: rgb(65, 152, 223);
+                height: 50px;
+            }
+            .menu_two>li:hover{
+                background-color: aqua;
+            }
+
+
+        </style>
+    </head>
+    <body style="background-image: url('/static/images/zhouyu.gif'); background-size: 10%">
+
+        <div class="dingduan" style="text-align: center;">
+            <h1>手机问答系统</h1>
+            <!-- <img src="74097177.jpg"> -->
+        </div>
+
+        <ul type="none" class="menu_one">
+            <li><a href="">首页</a></li>
+            <li><a href="/QA">进入问答页面</a>
+                <ul type="none" class="menu_two">
+<!--                    <li><a href="/certificate_read">查询个人证书</a></li>-->
+<!--                    <li><a href="/CA">查询其他证书-待施工</a></li>-->
+                </ul>
+            </li>
+            <li><a href="/FB">反馈</a>
+                <ul class="menu_two">
+<!--                    <li><a href="/certificate_apply">申请证书</a></li>-->
+<!--                    <li><a href="/certificate_cancel">撤销证书</a></li>-->
+                </ul>
+<!--            </li>-->
+<!--            <li><a href="">空闲教室操作</a>-->
+<!--                <ul class="menu_two">-->
+<!--                    <li><a href="/book_classroom">教室预约</a></li>-->
+<!--                    <li><a href="/cancelbooking_classroom">解除预约</a></li>-->
+<!--                    <li><a href="">管理教室状态(管理员)</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
+            <li><a href="">一级菜单D</a></li>
+            <li><a href="">个人中心</a>
+                <ul class="menu_two">
+                    <li><a href="">查看个人信息</a></li>
+                    <li><a href="">完善个人信息</a></li>
+                </ul>
+            </li>
+            <li><a href="/exit">退出登录</a>
+        </ul>
+
+    {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <script>
+                    alert("{{ message }}");
+                </script>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+    </body>
+</html>
